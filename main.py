@@ -12,12 +12,12 @@ import time
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # number of NCOs
-K_NCO = 1
+K_NCO = 4
 # webhook urls
-WH_URLS = ["https://hooks.slack.com/workflows/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",
-           "",
-           "",
-           ""]
+WH_URLS = ["https://hooks.slack.com/workflows/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",
+           "https://hooks.slack.com/workflows/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",
+           "https://hooks.slack.com/workflows/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",
+           "https://hooks.slack.com/workflows/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"]
 
 # The ID and range of a sample spreadsheet.
 SPREADSHEET_ID = '1bxOTACcm_LZ-iHJmF4ES5X-TfuzQMkMeJg2PsPNraRs'
@@ -25,14 +25,13 @@ RANGE_NAME = 'sheet1!C2:C' + str(K_NCO + 1)
 
 
 def main():
-    # schedule.every().friday.at('19:00').do(check)
-    # schedule.every().saturday.at('19:00').do(check)
-    # schedule.every().sunday.at('10:00').do(check)
-    # schedule.every().sunday.at('19:00').do(check)
-    schedule.every().monday.do(reset)
+    schedule.every().saturday.at('03:00').do(check)
+    schedule.every().sunday.at('03:00').do(check)
+    schedule.every().sunday.at('18:00').do(check)
+    schedule.every().monday.at('03:00').do(check)
+    schedule.every().tuesday.do(reset)
 
-    schedule.every().monday.at('15:35').do(check)
-    schedule.every().monday.at('23:35').do(reset)
+    schedule.every().minute.do(check)
 
     while True:
         schedule.run_pending()
