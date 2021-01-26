@@ -32,6 +32,7 @@ def main():
     schedule.every().tuesday.do(reset)
     schedule.every().tuesday.at('04:25').do(check)
     schedule.every().tuesday.at('04:30').do(check)
+    schedule.every().tuesday.at('04:23').do(check)
     while True:
         schedule.run_pending()
         time.sleep(1)
