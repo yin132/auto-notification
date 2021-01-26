@@ -21,7 +21,7 @@ WH_URLS = ["https://hooks.slack.com/workflows/TF9LWJ7D3/A01LJ5DHALQ/339048077681
 
 # The ID and range of a sample spreadsheet.
 SPREADSHEET_ID = '1bxOTACcm_LZ-iHJmF4ES5X-TfuzQMkMeJg2PsPNraRs'
-RANGE_NAME = 'sheet1!C2:C' + str(K_NCO + 1)
+RANGE_NAME = 'sheet1!D2:D' + str(K_NCO + 1)
 
 
 def main():
@@ -30,8 +30,6 @@ def main():
     schedule.every().sunday.at('18:00').do(check)
     schedule.every().monday.at('03:00').do(check)
     schedule.every().tuesday.do(reset)
-
-    schedule.every().tuesday.at('04:50').do(check)
 
     while True:
         schedule.run_pending()
@@ -87,18 +85,20 @@ def check():
     print('checking...')
     sheet = get_sheet()
 
+    print('api linked')
     result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,
                                 range=RANGE_NAME).execute()
     values = result.get('values', [])
-
+    print('got values')
     if not values:
         print('No data found.')
     else:
         # Code here
         for k in range(K_NCO):
             time.sleep(3)
-            if '0' == (values[k][0]):
+            if '0' == str(values[k][0]):
                 requests.post(WH_URLS[k])
+                print('webhook ping sent to level ' + str(k))
 
 
 if __name__ == '__main__':
