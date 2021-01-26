@@ -30,9 +30,9 @@ def main():
     schedule.every().sunday.at('18:00').do(check)
     schedule.every().monday.at('03:00').do(check)
     schedule.every().tuesday.do(reset)
-    schedule.every().tuesday.at('04:25').do(check)
-    schedule.every().tuesday.at('04:30').do(check)
-    schedule.every().tuesday.at('04:23').do(check)
+
+    schedule.every().tuesday.at('04:50').do(check)
+
     while True:
         schedule.run_pending()
         time.sleep(1)
@@ -96,6 +96,7 @@ def check():
     else:
         # Code here
         for k in range(K_NCO):
+            time.sleep(3)
             if '0' == (values[k][0]):
                 requests.post(WH_URLS[k])
 
