@@ -31,8 +31,6 @@ def main():
     schedule.every().monday.at('03:00').do(check)
     schedule.every().tuesday.do(reset)
 
-    schedule.every().minute.do(check)
-
     while True:
         schedule.run_pending()
         time.sleep(1)
