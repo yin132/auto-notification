@@ -33,7 +33,6 @@ def main():
     schedule.every().tuesday.do(reset)
 
     while True:
-        check()
         schedule.run_pending()
         time.sleep(1)
 
@@ -81,6 +80,7 @@ def reset():
     sheet.values().update(
         spreadsheetId=SPREADSHEET_ID, range=RANGE_NAME,
         valueInputOption='RAW', body=body).execute()
+    print('spreadsheet has been reset')
 
 
 def check():
