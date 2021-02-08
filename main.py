@@ -20,7 +20,7 @@ WH_URLS = ["https://hooks.slack.com/workflows/TF9LWJ7D3/A01LJ5DHALQ/339048077681
            "https://hooks.slack.com/workflows/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",
            "https://hooks.slack.com/workflows/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"]
 
-# The ID and range of a sample spreadsheet.
+# The ID and range of a spreadsheet.
 SPREADSHEET_ID = '1bxOTACcm_LZ-iHJmF4ES5X-TfuzQMkMeJg2PsPNraRs'
 RANGE_NAME = 'sheet1!D2:D' + str(K_NCO + 1)
 
@@ -30,7 +30,7 @@ def main():
     schedule.every().sunday.at('03:00').do(check)
     schedule.every().sunday.at('18:00').do(check)
     schedule.every().monday.at('03:00').do(check)
-    schedule.every().tuesday.do(reset)
+    schedule.every().tuesday.at('08:00').do(reset)
 
     while True:
         schedule.run_pending()
