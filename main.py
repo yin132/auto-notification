@@ -12,16 +12,12 @@ import time
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # number of NCOs
-K_NCO = 5
+K_NCO = 0
 # webhook urls
-WH_URLS = ["https://hooks.slack.com/workflows/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",
-           "https://hooks.slack.com/workflows/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",
-           "https://hooks.slack.com/workflows/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",
-           "https://hooks.slack.com/workflows/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",
-           "https://hooks.slack.com/workflows/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"]
+WH_URLS = []
 
 # The ID and range of a spreadsheet.
-SPREADSHEET_ID = '1bxOTACcm_LZ-iHJmF4ES5X-TfuzQMkMeJg2PsPNraRs'
+SPREADSHEET_ID = ''
 RANGE_NAME = 'sheet1!D2:D' + str(K_NCO + 1)
 
 
